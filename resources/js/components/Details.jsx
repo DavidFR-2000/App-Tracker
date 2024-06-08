@@ -29,39 +29,41 @@ export function Details({ gameName, tagLine }) {
     }, [gameName, tagLine]);
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <nav className="bg-black text-white p-4 flex justify-between items-center">
+        <div className="min-h-screen bg-gray-100 flex flex-col">
+            <nav className="bg-black text-white p-4 flex justify-between items-center shadow-md">
                 <div className="flex items-center space-x-4">
                     <img src="/path/to/logo.png" alt="Logo" className="h-8" />
                     <button onClick={() => window.history.back()} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Volver</button>
                 </div>
-                <div>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mr-2 hover:bg-blue-700 transition">Login</button>
+                <div className="flex space-x-2">
+                    <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
                     <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Register</button>
                 </div>
-            </nav>
+             </nav>
 
-            <div className="max-w-6xl mx-auto py-10 px-4">
-                {profile && (
-                    <div className="flex items-start space-x-8 mb-8">
-                        <img src={`https://ddragon.leagueoflegends.com/cdn/12.10.1/img/profileicon/${profile.profileIconId}.png`} alt="Profile Icon" className="w-32 h-32 rounded-full border-4 border-gray-300" />
-                        <div>
-                            <h2 className="text-4xl font-bold">{profile.name}</h2>
-                            <p className="text-xl text-gray-600">Nivel: {profile.summonerLevel}</p>
-                        </div>
-                        {rank && (
-                            <div className="flex flex-col items-center space-y-2">
-                                <img src="/path/to/rank_icon.png" alt="Rank Icon" className="w-24 h-24" />
-                                <p className="text-xl">{rank.tier} {rank.rank} - {rank.leaguePoints} LP</p>
+
+             <div className="max-w-6xl mx-auto py-10 px-4 flex flex-col items-center md:items-start">
+                    {profile && (
+                        <div className="flex flex-col md:flex-row items-center md:items-start space-x-0 md:space-x-8 mb-8">
+                            <img src={`https://ddragon.leagueoflegends.com/cdn/12.10.1/img/profileicon/${profile.profileIconId}.png`} alt="Profile Icon" className="w-32 h-32 rounded-full border-4 border-gray-300" />
+                            <div className="text-center md:text-left mt-4 md:mt-0">
+                                <h2 className="text-4xl font-bold">{profile.name}</h2>
+                                <p className="text-xl text-gray-600">Nivel: {profile.summonerLevel}</p>
                             </div>
-                        )}
-                    </div>
-                )}
+                            {rank && (
+                                <div className="flex flex-col items-center mt-4 md:mt-0 md:ml-auto space-y-2">
+                                    <img src="/path/to/rank_icon.png" alt="Rank Icon" className="w-24 h-24" />
+                                    <p className="text-xl">{rank.tier} {rank.rank} - {rank.leaguePoints} LP</p>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
 
                 {matches.length > 0 && (
-                    <div>
-                        <h2 className="text-3xl font-semibold mb-4">Partidas Recientes</h2>
-                        <div className="grid grid-cols-1 gap-6">
+                    <div className="max-w-6xl mx-auto px-4">
+                        <h2 className="text-3xl font-semibold mb-4 text-center md:text-left">Partidas Recientes</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {matches.map((match, index) => (
                                 <div key={index} className="border rounded-lg p-6 bg-white shadow-lg">
                                     <div className="flex justify-between items-center mb-4">
@@ -86,7 +88,6 @@ export function Details({ gameName, tagLine }) {
 
                 {error && <p className="text-red-500 text-center mt-8">{error}</p>}
             </div>
-        </div>
     );
 }
 

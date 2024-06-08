@@ -2,8 +2,10 @@
 export default {
   purge: {
     content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
+      "./resources/**/*.blade.php",
+      "./resources/**/*.{js,ts,jsx,tsx}",
+      "./resources/**/*.vue",
+
     ],
     options: {
       safelist: ['bg-black'],
