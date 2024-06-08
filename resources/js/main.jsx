@@ -1,4 +1,6 @@
+import { h } from 'preact';
 import { render } from 'preact';
-import { App } from './AppComponent';
+import { AppComponent } from './AppComponent';
 
-render(<App />, document.getElementById('app'));
+// Renderiza el componente principal en el elemento con id 'app'
+render(<AppComponent />, document.getElementById('app'));
