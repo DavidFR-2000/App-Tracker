@@ -12,6 +12,7 @@ export default defineConfig({
             refresh: true,                 
         }),
         preact(),
+        
     ],
     resolve: {
         alias: {
@@ -21,5 +22,7 @@ export default defineConfig({
             'react/jsx-dev-runtime': 'preact/jsx-dev-runtime'
         },
         extensions: ['.js', '.jsx']        
-    }
+    },
+    assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg']
+    
 });

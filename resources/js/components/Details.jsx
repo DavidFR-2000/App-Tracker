@@ -30,16 +30,7 @@ export function Details({ gameName, tagLine }) {
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
-            <nav className="bg-black text-white p-4 flex justify-between items-center shadow-md">
-                <div className="flex items-center space-x-4">
-                    <img src="/path/to/logo.png" alt="Logo" className="h-8" />
-                    <button onClick={() => window.history.back()} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Volver</button>
-                </div>
-                <div className="flex space-x-2">
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
-                    <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Register</button>
-                </div>
-             </nav>
+            
 
 
              <div className="max-w-6xl mx-auto py-10 px-4 flex flex-col items-center md:items-start">
