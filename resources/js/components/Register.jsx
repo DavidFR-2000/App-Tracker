@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import axios from 'axios';
 
-export function Register() {
+export function Register({ onRegisterSuccess }) {
     const [formData, setFormData] = useState({
         username: '',
         name: '',
@@ -38,7 +38,12 @@ export function Register() {
             });
 
             if (response.data.status === 'success') {
-                route(`/profile/${formData.username}`);
+                const usuario = {
+                    username: formData.username,
+                    invocadorFoto: response.data.invocadorFoto // Suponiendo que la respuesta incluye la URL de la foto del invocador
+                };
+                localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+                onRegisterSuccess(usuario); // Llama a la función de callback para actualizar el usuario activo
             } else {
                 alert("Registration failed: " + response.data.message);
             }

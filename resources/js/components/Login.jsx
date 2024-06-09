@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import axios from 'axios';
 
-export function Login() {
+export function Login({ onLoginSuccess }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -20,10 +20,13 @@ export function Login() {
             });
 
             if (response.data.status === 'success') {
-                // Redirige al perfil del usuario
-                route(`/profile/${username}`);
+                const usuario = {
+                    username,
+                    invocadorFoto: response.data.invocadorFoto // Suponiendo que la respuesta incluye la URL de la foto del invocador
+                };
+                localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+                onLoginSuccess(usuario); // Llama a la función de callback para actualizar el usuario activo
             } else {
-                // Maneja el caso en que la autenticación falle
                 setError('Login failed: ' + response.data.message);
             }
         } catch (error) {
