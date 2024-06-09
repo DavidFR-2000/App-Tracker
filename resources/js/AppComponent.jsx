@@ -20,9 +20,9 @@ export function AppComponent() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-indigo-50 to-pink-100 flex flex-col items-center justify-start p-4">
+        <header className="min-h-screen bg-gradient-to-r from-indigo-50 to-pink-100 flex flex-col items-center justify-start p-4">
             {/* Barra de navegación */}
-            <nav className="w-full bg-white shadow-md rounded-lg mb-8 p-4 flex justify-between items-center">
+            <nav className="w-full bg-black shadow-md rounded-lg mb-8 p-4 flex justify-between items-center">
                 <div className="flex items-center space-x-4">
                     <img
                         src="/Captura.PNG"// Reemplaza con la URL de tu imagen o logo
@@ -85,6 +85,6 @@ export function AppComponent() {
                 <Profile path="/profile/:user" />
                 <Details path="/details/:gameName/:tagLine" />
             </Router>
-        </div>
+        </header>
     );
 }
