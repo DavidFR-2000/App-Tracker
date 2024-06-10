@@ -39,7 +39,10 @@ class VerifyCsrfToken
      *
      * @var array<int, string>
      */
-    protected $except = [];
+    protected $except = [
+        'https://*.ngrok-free.app/*', // Excluir la URL de Ngrok
+    'http://127.0.0.1:8000/*', // Excluir localhost para pruebas
+    ];
 
     /**
      * The globally ignored URIs that should be excluded from CSRF verification.

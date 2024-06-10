@@ -53,7 +53,9 @@ class Kernel implements KernelContract
      *
      * @var array<int, class-string|string>
      */
-    protected $middleware = [];
+    protected $middleware = [
+        \Fruitcake\Cors\HandleCors::class,
+    ];
 
     /**
      * The application's route middleware groups.

@@ -58,17 +58,17 @@ export function Register({ onRegisterSuccess }) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-white p-10 rounded-xl shadow-lg max-w-lg w-full">
-                <h1 className="text-3xl font-bold mb-8 text-center">Registro</h1>
-                <form onSubmit={handleSubmit}>
+        <div className="min-h-screen flex items-center justify-center bg-fondoWeb p-4">
+            <div className="p-10 rounded-xl max-w-lg w-full"> {/* Eliminado bg-white y shadow-lg */}
+                <h1 className="font-titulo text-4xl font-bold text-enfasis1 mb-8 text-center">Registro</h1>
+                <form onSubmit={handleSubmit} className="flex flex-col">
                     <input
                         type="text"
                         name="username"
                         placeholder="Usuario"
                         value={formData.username}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="text"
@@ -76,7 +76,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Nombre"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="email"
@@ -84,7 +84,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Correo Electrónico"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="password"
@@ -92,7 +92,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Contraseña"
                         value={formData.password}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="password"
@@ -100,7 +100,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Confirmar Contraseña"
                         value={formData.confirmPassword}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="text"
@@ -108,7 +108,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Nombre de Invocador"
                         value={formData.gameName}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <input
                         type="text"
@@ -116,11 +116,11 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Etiqueta"
                         value={formData.tagLine}
                         onChange={handleChange}
-                        className="w-full p-4 mb-4 border-2 border-black rounded-lg"
+                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
                     />
                     <button
                         type="submit"
-                        className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all"
+                        className="bg-green-600 text-white py-4 px-6 rounded-full hover:bg-green-700 transition-all focus:outline-none focus:ring-4 focus:ring-green-500"
                     >
                         Registrarse
                     </button>

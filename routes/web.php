@@ -23,3 +23,8 @@ Route::get('/api/profile/{gameName}/{tagLine}', [RiotApiController::class, 'getS
 Route::post('/api/register', [AuthController::class, 'register']);
 Route::post('/api/login', [AuthController::class, 'login']);
 Route::get('/api/user/{username}', [UserController::class, 'getUserDetails']);
+
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
