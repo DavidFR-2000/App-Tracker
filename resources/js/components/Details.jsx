@@ -55,7 +55,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item0)}
                         alt="Item 1"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -63,7 +63,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item1)}
                         alt="Item 2"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -71,7 +71,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item2)}
                         alt="Item 3"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -79,7 +79,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item3)}
                         alt="Item 4"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -87,7 +87,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item4)}
                         alt="Item 5"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -95,7 +95,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item5)}
                         alt="Item 6"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -103,7 +103,7 @@ export function Details({ gameName, tagLine }) {
                     <img
                         src={getItemImage(participant.item6)}
                         alt="Trinket"
-                        className="w-8 h-8 rounded border border-gray-300"
+                        className="w-10 h-10 rounded border border-gray-300"
                         loading="lazy"
                     />
                 )}
@@ -116,11 +116,11 @@ export function Details({ gameName, tagLine }) {
     };
 
     return (
-        <div className="min-h-screen bg-fondoWeb text-texto flex flex-col items-center py-10 w-9/10">
+        <div className="min-h-screen w-full flex flex-col items-center justify-center bg-detalles-fondo bg-cover bg-center m-0 p-8">
             <div className="w-full max-w-[1000px] px-4">
                 {/* Datos de Usuario y Rango */}
                 {profile && (
-                    <div className="w-full p-6 rounded-xl bg-secciones flex flex-col md:flex-row items-center md:items-start mb-8 shadow-lg">
+                    <div className="w-full p-6 rounded-xl bg-secciones bg-opacity-90 flex flex-col md:flex-row items-center md:items-start mb-8 shadow-lg">
                         <img src={ddragonImageUrl('profileicon', profile.profileIconId)} alt="Profile Icon" className="w-32 h-32 rounded-full border-4 border-gray-300" />
                         <div className="text-center md:text-left flex-grow mt-4 md:mt-0 md:ml-6">
                             <h2 className="font-titulo text-4xl font-bold text-enfasis1">{profile.name}</h2>

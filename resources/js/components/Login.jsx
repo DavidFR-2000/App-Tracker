@@ -6,15 +6,14 @@ import axios from 'axios';
 export function Login({ onLoginSuccess }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [csrfToken, setCsrfToken] = useState(null); // Estado para el token CSRF
+    const [csrfToken, setCsrfToken] = useState(null);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // Obtener el token CSRF cuando el componente se monta
         const fetchCsrfToken = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/csrf-token', {
-                    withCredentials: true // Asegúrate de incluir las credenciales si el servidor las requiere
+                    withCredentials: true
                 });
                 setCsrfToken(response.data.csrfToken);
             } catch (err) {
@@ -30,24 +29,24 @@ export function Login({ onLoginSuccess }) {
         setError('');
 
         try {
-            // Envía una solicitud POST al servidor para autenticar al usuario
             const response = await axios.post('http://127.0.0.1:8000/api/login', {
                 username,
                 password
             }, {
                 headers: {
-                    'X-CSRF-TOKEN': csrfToken // Incluye el token CSRF en el encabezado
+                    'X-CSRF-TOKEN': csrfToken
                 },
-                withCredentials: true // Incluir credenciales si el servidor las requiere
+                withCredentials: true
             });
 
             if (response.data.status === 'success') {
                 const usuario = {
                     username,
-                    invocadorFoto: response.data.invocadorFoto // Suponiendo que la respuesta incluye la URL de la foto del invocador
+                    invocadorFoto: response.data.invocadorFoto
                 };
                 localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
-                onLoginSuccess(usuario); // Llama a la función de callback para actualizar el usuario activo
+                onLoginSuccess(usuario);
+                route(`/profile/${usuario.username}`);
             } else {
                 setError('Login failed: ' + response.data.message);
             }
@@ -62,28 +61,28 @@ export function Login({ onLoginSuccess }) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-fondoWeb p-4">
-            <div className="p-10 rounded-xl max-w-lg w-full"> {/* Eliminado shadow-lg */}
+        <div className="min-h-screen w-full flex items-center justify-center bg-login-fondo bg-cover bg-center m-0 p-0">
+            <div className="bg-secciones bg-opacity-90 w-full max-w-lg p-10 rounded-xl flex flex-col items-center justify-center">
                 <h1 className="font-titulo text-4xl font-bold text-enfasis1 mb-8 text-center">Iniciar Sesión</h1>
                 {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
-                <form onSubmit={handleSubmit} className="flex flex-col">
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full">
                     <input
                         type="text"
                         placeholder="Usuario"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="password"
                         placeholder="Contraseña"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <button
                         type="submit"
-                        className="bg-enfasis1 text-white py-4 px-6 rounded-full hover:bg-enfasis2 transition-all focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-enfasis1 text-white py-4 px-6 rounded-full hover:bg-enfasis2 transition-all focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     >
                         Iniciar Sesión
                     </button>

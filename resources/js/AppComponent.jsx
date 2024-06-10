@@ -15,7 +15,7 @@ export function AppComponent() {
         const usuario = localStorage.getItem('usuarioActivo');
         if (usuario) {
             setUsuarioActivo(JSON.parse(usuario));
-        }
+        }       
     }, []);
 
     const handleLogout = () => {
@@ -39,72 +39,67 @@ export function AppComponent() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-between bg-fondoWeb text-texto">
-        <header className="bg-secciones w-full shadow-md p-4 max-h-20 flex justify-between items-center overflow-hidden">
-            {/* Logo y Título */}
-            <div className="flex items-center ml-10">
-                <img
-                    src="/Captura.PNG" // Reemplaza con la URL de tu imagen o logo
-                    alt="App Logo"
-                    className="min-w-[100px] max-h-[80px] w-auto object-contain" // Asegura que el logo se ajuste sin cortar
-                />
-            </div>
-            {/* Menú de Navegación */}
-            <div className="flex items-center space-x-4 mr-10">
-                <button
-                    onClick={() => route('/')}
-                    className="font-titulo text-sm md:text-xl lg:text-2xl hover:text-enfasis1 transition-all focus:outline-none"
-                >
-                    Home
-                </button>
-                {usuarioActivo ? (
-                    <>
-                        {usuarioActivo.invocadorFoto && (
-                            <img
-                                src={usuarioActivo.invocadorFoto} // Foto del invocador
-                                alt="Invocador"
-                                className="w-8 h-8 rounded-full"
-                            />
-                        )}
-                        <button
-                            onClick={() => route(`/profile/${usuarioActivo.username}`)}
-                            className="font-titulo text-sm md:text-xl lg:text-2xl hover:text-enfasis1 transition-all focus:outline-none"
-                        >
-                            {usuarioActivo.username}
-                        </button>
-                        <button
-                            onClick={handleLogout}
-                            className="font-titulo text-sm md:text-xl lg:text-2xl hover:text-enfasis1 transition-all focus:outline-none"
-                        >
-                            Logout
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        <button
-                            onClick={() => route('/login')}
-                            className="font-titulo text-sm md:text-xl lg:text-2xl hover:text-enfasis1 transition-all focus:outline-none"
-                        >
-                            Login
-                        </button>
-                        <button
-                            onClick={() => route('/register')}
-                            className="font-titulo text-sm md:text-xl lg:text-2xl hover:text-enfasis1 transition-all focus:outline-none"
-                        >
-                            Registro
-                        </button>
-                    </>
-                )}
-            </div>
-        </header>
-        <main className="flex flex-col items-center justify-start mt-24 p-4">
-            <Router>
-                {/* Ruta para la búsqueda, renderiza el formulario de búsqueda directamente */}
-                <div path="/" className="w-full flex flex-col items-center">
-                    <div className="w-full max-w-[1000px] -ml-12">
-                        <h1 className="font-titulo italic font-bold text-center text-enfasis1 mb-8" style={{ fontSize: '80px', paddingTop: '50px', paddingBottom: '20px' }}>
-                            Izanami.gg
-                        </h1>
+        <div className="flex flex-col min-h-screen w-full bg-radial-gradient from-enfasis2 via-fondoWeb to-enfasis1 animate-gradient-x text-texto font-parrafo bg-[length:200%_200%] m-0 p-0">
+            <header className="flex items-center justify-between bg-transparent z-50 w-full px-4 md:px-8">
+                <div className="flex items-center space-x-4">
+                    <img
+                        src="/Captura.PNG"
+                        alt="App Logo"
+                        className="h-12 w-auto object-contain"
+                    />
+                    <span className="text-xl font-titulo">Izanami.gg</span>
+                </div>
+                <nav className="flex space-x-4 text-base md:text-lg font-titulo">
+                    <button
+                        onClick={() => route('/')}
+                        className="hover:text-enfasis1 transition duration-300"
+                    >
+                        Home
+                    </button>
+                    {usuarioActivo ? (
+                        <>
+                            {usuarioActivo.invocadorFoto && (
+                                <img
+                                    src={usuarioActivo.invocadorFoto}
+                                    alt="Invocador"
+                                    className="h-8 w-8 rounded-full"
+                                />
+                            )}
+                            <button
+                                onClick={() => route(`/profile/${usuarioActivo.username}`)}
+                                className="hover:text-enfasis1 transition duration-300"
+                            >
+                                {usuarioActivo.username}
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                className="hover:text-enfasis1 transition duration-300"
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button
+                                onClick={() => route('/login')}
+                                className="hover:text-enfasis1 transition duration-300"
+                            >
+                                Login
+                            </button>
+                            <button
+                                onClick={() => route('/register')}
+                                className="hover:text-enfasis1 transition duration-300"
+                            >
+                                Registro
+                            </button>
+                        </>
+                    )}
+                </nav>
+            </header>
+            <main className="flex-grow flex flex-col items-center justify-center w-full m-0 p-0">
+                <Router>
+                    <div path="/" className="flex flex-col items-center w-full md:w-5/6 lg:w-11/12 space-y-4">
+                        <h1 className="text-6xl md:text-8xl font-titulo mb-8">Izanami.gg</h1>
                         <div className="flex flex-col md:flex-row items-center md:space-x-2 space-y-4 md:space-y-0 mb-7">
                             <input
                                 type="text"
@@ -125,37 +120,38 @@ export function AppComponent() {
                             </div>
                             <button
                                 onClick={handleSearch}
-                                className="bg-enfasis1 text-white py-4 px-6 rounded-full hover:bg-enfasis2 transition-all focus:outline-none focus:ring-4 focus:ring-enfasis2 md:ml-4" // Agregado un margen a la izquierda en dispositivos grandes
+                                className="bg-enfasis1 text-white py-4 px-6 rounded-full hover:bg-enfasis2 transition-all focus:outline-none focus:ring-4 focus:ring-enfasis2 md:ml-4"
                             >
                                 Buscar
                             </button>
                         </div>
                     </div>
-                </div>
-                {/* Rutas adicionales */}
-                <Register path="/register" onRegisterSuccess={handleLoginSuccess} />
-                <Login path="/login" onLoginSuccess={handleLoginSuccess} />
-                <Profile path="/profile/:user" />
-                <Details path="/details/:gameName/:tagLine" />
-            </Router>
-        </main>
-        <footer className="bg-secciones text-texto py-8">
-            <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-                <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                    <Register path="/register" onRegisterSuccess={handleLoginSuccess} />
+                    <Login path="/login" onLoginSuccess={handleLoginSuccess} />
+                    <Profile path="/profile/:user" />
+                    <Details path="/details/:gameName/:tagLine" />
+                </Router>
+            </main>
+            <footer className="bg-secciones p-4 flex flex-col items-center space-y-6 w-full rounded-t-lg z-50 mt-auto">
+                <div className="flex items-center space-x-4">
                     <img
-                        src="/Captura.PNG" // Reemplaza con la URL de tu imagen o logo
+                        src="/Captura.PNG"
                         alt="App Logo"
-                        className="min-w-[100px] max-h-[200px] w-auto object-contain" // Ajusta el tamaño del logo
+                        className="h-24 w-auto object-contain"
                     />
                 </div>
-                <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 text-titulo text-lg">
-                    <a href="/accesibilidad" className="hover:text-enfasis1 transition-all">Accesibilidad</a>
-                    <a href="/aviso-legal" className="hover:text-enfasis1 transition-all">Aviso Legal</a>
-                    <a href="/politica-cookies" className="hover:text-enfasis1 transition-all">Política de Cookies</a>
-                    <a href="/politica-privacidad" className="hover:text-enfasis1 transition-all">Política de Privacidad</a>
+                <div className="flex space-x-6 text-base">
+                    <a href="/accesibilidad" className="hover:text-enfasis1 transition duration-300">Accesibilidad</a>
+                    <a href="/aviso-legal" className="hover:text-enfasis1 transition duration-300">Aviso Legal</a>
+                    <a href="/politica-cookies" className="hover:text-enfasis1 transition duration-300">Política de Cookies</a>
+                    <a href="/politica-privacidad" className="hover:text-enfasis1 transition duration-300">Política de Privacidad</a>
                 </div>
-            </div>
-        </footer>
-    </div>
-);
+                <div className="text-center max-w-md">
+                    <h2 className="text-xl font-titulo">Sobre Nosotros</h2>
+                    <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur venenatis felis ut bibendum bibendum. Aenean vel elit sed est facilisis vehicula.</p>
+                </div>
+            </footer>
+        </div>
+    );
 }
+    

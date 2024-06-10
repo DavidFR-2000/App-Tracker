@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import axios from 'axios';
@@ -22,7 +21,7 @@ export function Register({ onRegisterSuccess }) {
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match");
+            alert("Las contraseñas no coinciden");
             return;
         }
 
@@ -44,31 +43,32 @@ export function Register({ onRegisterSuccess }) {
                 };
                 localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
                 onRegisterSuccess(usuario); // Llama a la función de callback para actualizar el usuario activo
+                route(`/profile/${usuario.username}`);
             } else {
-                alert("Registration failed: " + response.data.message);
+                alert("Registro fallido: " + response.data.message);
             }
         } catch (error) {
-            console.error("There was an error!", error);
+            console.error("Hubo un error!", error);
             if (error.response && error.response.data) {
                 alert("Error: " + JSON.stringify(error.response.data.errors));
             } else {
-                alert("An error occurred during registration. Please try again.");
+                alert("Ocurrió un error durante el registro. Por favor, intenta nuevamente.");
             }
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-fondoWeb p-4">
-            <div className="p-10 rounded-xl max-w-lg w-full"> {/* Eliminado bg-white y shadow-lg */}
+        <div className="min-h-screen w-full flex items-center justify-center bg-registro-fondo bg-cover bg-center m-0 p-0">
+            <div className="bg-secciones bg-opacity-90 w-full h-full max-w-lg p-10 rounded-xl flex flex-col items-center justify-center">
                 <h1 className="font-titulo text-4xl font-bold text-enfasis1 mb-8 text-center">Registro</h1>
-                <form onSubmit={handleSubmit} className="flex flex-col">
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full">
                     <input
                         type="text"
                         name="username"
                         placeholder="Usuario"
                         value={formData.username}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="text"
@@ -76,7 +76,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Nombre"
                         value={formData.name}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="email"
@@ -84,7 +84,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Correo Electrónico"
                         value={formData.email}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="password"
@@ -92,7 +92,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Contraseña"
                         value={formData.password}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="password"
@@ -100,7 +100,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Confirmar Contraseña"
                         value={formData.confirmPassword}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="text"
@@ -108,7 +108,7 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Nombre de Invocador"
                         value={formData.gameName}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <input
                         type="text"
@@ -116,11 +116,11 @@ export function Register({ onRegisterSuccess }) {
                         placeholder="Etiqueta"
                         value={formData.tagLine}
                         onChange={handleChange}
-                        className="bg-transparent text-texto text-2xl p-4 mb-4 border border-black rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2"
+                        className="bg-secciones text-texto text-2xl p-4 border-2 border-secciones rounded-full focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     />
                     <button
                         type="submit"
-                        className="bg-green-600 text-white py-4 px-6 rounded-full hover:bg-green-700 transition-all focus:outline-none focus:ring-4 focus:ring-green-500"
+                        className="bg-enfasis1 text-white py-4 px-6 rounded-full hover:bg-enfasis2 transition-all focus:outline-none focus:ring-4 focus:ring-enfasis2 w-full"
                     >
                         Registrarse
                     </button>
